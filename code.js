@@ -25,10 +25,11 @@ figma.ui.onmessage = msg => {
             text.characters = pageTitle;
         }
         text.x = 0;
-        text.y = 105;
+        text.y = 0;
         text.fontSize = 46;
-        text.textAlignVertical = "TOP";
-        text.textAutoResize = "WIDTH_AND_HEIGHT";
+        text.textAlignVertical = "CENTER";
+        text.textAutoResize = "NONE";
+        text.resize(620, 320);
         text.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
         page.backgrounds = [{ type: 'SOLID', color: { r: 0.070588, g: 0.57254, b: 0.933 } }];
         frame.backgrounds = [{ type: 'SOLID', color: { r: 0.07, g: 0.57254, b: 0.933 } }];

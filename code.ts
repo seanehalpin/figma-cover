@@ -34,10 +34,11 @@ figma.ui.onmessage = msg => {
     }
     
     text.x = 0
-    text.y = 105
+    text.y = 0
     text.fontSize = 46
-    text.textAlignVertical = "TOP"
-    text.textAutoResize = "WIDTH_AND_HEIGHT"
+    text.textAlignVertical = "CENTER"
+    text.textAutoResize = "NONE"
+    text.resize(620,320)
 
     
 
