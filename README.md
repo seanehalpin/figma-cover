@@ -1,5 +1,7 @@
 
-A Figma plugin to jump start making new pages & frames in HSDS
+## Cover
+
+A Figma plugin to create cover images
 
 ### Setup
 
