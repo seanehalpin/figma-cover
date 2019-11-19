@@ -13,4 +13,4 @@ A Figma plugin to create cover images
 
 ### How to use
 
-- Run plugin, enter page name
+- Run plugin, enter title (optional)
