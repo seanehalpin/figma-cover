@@ -7,9 +7,11 @@ figma.ui.onmessage = msg => {
         const frame = figma.createFrame();
         const page = figma.createPage();
         const text = figma.createText();
+        const pageBreak = figma.createPage();
         frame.resize(620, 320);
         page.name = "Cover";
         frame.name = "Thumb";
+        pageBreak.name = "---";
         page.appendChild(frame);
         frame.appendChild(text);
         text.fontName = {
@@ -33,6 +35,7 @@ figma.ui.onmessage = msg => {
         figma.currentPage = page;
         figma.viewport.zoom = 1;
         figma.root.insertChild(0, page);
+        figma.root.insertChild(1, pageBreak);
     }
     figma.closePlugin();
 };
