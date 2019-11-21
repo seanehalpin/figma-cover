@@ -500,21 +500,23 @@
   }
 
   .select-menu {
-    margin-top:  10px;
+    margin: 10px 0;
   }
 
   </style>
   
-  <textarea rows="2" id="mainTitle" class="textarea" placeholder="Title (optional)"></textarea>
   <select name="" id="select-menu" class="select-menu">
-    <option value="0">Choose a background color</option>
-    <option value="1">Blue</option>
-    <option value="2" >Charcoal</option>
-    <option value="3" >Gold</option>
-    <option value="4" >Green</option>
-    <option value="5" >Indigo</option>
-    <option value="6" >Pink</option>
+    <option value="0">Choose a category:</option>
+    <option value="1">Brainstorm</option>
+    <option value="2" >Discovery</option>
+    <option value="3" >Experimental</option>
+    <option value="4" >Hand-Off</option>
+    <option value="5" >Research</option>
+    <option value="6" >Review</option>
+    <option value="7" >WIP</option>
   </select>
+
+  <textarea rows="2" id="mainTitle" class="textarea" placeholder="Title (optional)"></textarea>
   <button id="create" class='button button--primary'>Create</button>
 
   <div class="onboarding-tip">
@@ -535,8 +537,6 @@
     const color = document.getElementById('select-menu');
     const titletext = title.value;
     const colorValue = color.options[color.selectedIndex].value;
-  
     parent.postMessage({ pluginMessage: { type: 'create-page', titletext, colorValue } }, '*')
   }
   </script>
-  
