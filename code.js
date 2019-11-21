@@ -12,6 +12,7 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         yield figma.loadFontAsync({ family: "Roboto", style: "Regular" });
         yield figma.loadFontAsync({ family: "Graphik", style: "Medium" });
+        yield figma.loadFontAsync({ family: "Graphik", style: "Regular" });
     });
 }
 main().then(() => {
@@ -65,7 +66,7 @@ main().then(() => {
             };
             label.fontName = {
                 family: "Graphik",
-                style: "Medium",
+                style: "Regular",
             };
             text.x = 0;
             text.y = 20;
@@ -83,7 +84,7 @@ main().then(() => {
             label.fills = [{ type: 'SOLID', color: { r: 255 / 255, g: 255 / 255, b: 255 / 255 } }];
             if (bgColor === "0" || bgColor === "1") {
                 page.backgrounds = [{ type: 'SOLID', color: { r: 86 / 255, g: 194 / 255, b: 136 / 255 } }];
-                frame.backgrounds = [{ type: 'SOLID', color: { r: 86 / 255, g: 194 / 255, b: 136 / 255 } }];
+                frame.backgrounds = [{ type: 'SOLID', visible: false, color: { r: 86 / 255, g: 194 / 255, b: 136 / 255 } }];
                 if (pageTitle.length === 0) {
                     if (oldTitleArray.length >= 1) {
                         text.characters = oldTitleArray.toString();
@@ -99,7 +100,7 @@ main().then(() => {
             }
             if (bgColor === "2") {
                 page.backgrounds = [{ type: 'SOLID', color: { r: 82 / 255, g: 124 / 255, b: 235 / 255 } }];
-                frame.backgrounds = [{ type: 'SOLID', color: { r: 82 / 255, g: 124 / 255, b: 235 / 255 } }];
+                frame.backgrounds = [{ type: 'SOLID', visible: false, color: { r: 82 / 255, g: 124 / 255, b: 235 / 255 } }];
                 if (pageTitle.length === 0) {
                     if (oldTitleArray.length >= 1) {
                         text.characters = oldTitleArray.toString();
@@ -115,7 +116,7 @@ main().then(() => {
             }
             if (bgColor === "3") {
                 page.backgrounds = [{ type: 'SOLID', color: { r: 85 / 255, g: 101 / 255, b: 117 / 255 } }];
-                frame.backgrounds = [{ type: 'SOLID', color: { r: 85 / 255, g: 101 / 255, b: 117 / 255 } }];
+                frame.backgrounds = [{ type: 'SOLID', visible: false, color: { r: 85 / 255, g: 101 / 255, b: 117 / 255 } }];
                 if (pageTitle.length === 0) {
                     if (oldTitleArray.length >= 1) {
                         text.characters = oldTitleArray.toString();
@@ -127,11 +128,11 @@ main().then(() => {
                 else {
                     text.characters = pageTitle;
                 }
-                label.characters = "Experimental";
+                label.characters = "Wireframe";
             }
             if (bgColor === "4") {
                 page.backgrounds = [{ type: 'SOLID', color: { r: 18 / 255, g: 146 / 255, b: 238 / 255 } }];
-                frame.backgrounds = [{ type: 'SOLID', color: { r: 18 / 255, g: 146 / 255, b: 238 / 255 } }];
+                frame.backgrounds = [{ type: 'SOLID', visible: false, color: { r: 18 / 255, g: 146 / 255, b: 238 / 255 } }];
                 if (pageTitle.length === 0) {
                     if (oldTitleArray.length >= 1) {
                         text.characters = oldTitleArray.toString();
@@ -143,11 +144,11 @@ main().then(() => {
                 else {
                     text.characters = pageTitle;
                 }
-                label.characters = "Hand-Off";
+                label.characters = "Usage";
             }
             if (bgColor === "5") {
                 page.backgrounds = [{ type: 'SOLID', color: { r: 250 / 255, g: 179 / 255, b: 71 / 255 } }];
-                frame.backgrounds = [{ type: 'SOLID', color: { r: 250 / 255, g: 179 / 255, b: 71 / 255 } }];
+                frame.backgrounds = [{ type: 'SOLID', visible: false, color: { r: 250 / 255, g: 179 / 255, b: 71 / 255 } }];
                 if (pageTitle.length === 0) {
                     if (oldTitleArray.length >= 1) {
                         text.characters = oldTitleArray.toString();
@@ -163,7 +164,7 @@ main().then(() => {
             }
             if (bgColor === "6") {
                 page.backgrounds = [{ type: 'SOLID', color: { r: 242 / 255, g: 52 / 255, b: 89 / 255 } }];
-                frame.backgrounds = [{ type: 'SOLID', color: { r: 242 / 255, g: 52 / 255, b: 89 / 255 } }];
+                frame.backgrounds = [{ type: 'SOLID', visible: false, color: { r: 242 / 255, g: 52 / 255, b: 89 / 255 } }];
                 if (pageTitle.length === 0) {
                     if (oldTitleArray.length >= 1) {
                         text.characters = oldTitleArray.toString();
@@ -179,7 +180,7 @@ main().then(() => {
             }
             if (bgColor === "7") {
                 page.backgrounds = [{ type: 'SOLID', color: { r: 197 / 255, g: 147 / 255, b: 219 / 255 } }];
-                frame.backgrounds = [{ type: 'SOLID', color: { r: 197 / 255, g: 147 / 255, b: 219 / 255 } }];
+                frame.backgrounds = [{ type: 'SOLID', visible: false, color: { r: 197 / 255, g: 147 / 255, b: 219 / 255 } }];
                 if (pageTitle.length === 0) {
                     if (oldTitleArray.length >= 1) {
                         text.characters = oldTitleArray.toString();

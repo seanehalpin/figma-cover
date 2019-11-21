@@ -3,6 +3,7 @@ figma.showUI(__html__,{width: 300, height: 340});
 async function main() {
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" });
   await figma.loadFontAsync({ family: "Graphik", style: "Medium" });
+  await figma.loadFontAsync({ family: "Graphik", style: "Regular" });
 }
 
 main().then(() => {
@@ -71,7 +72,7 @@ main().then(() => {
 
       label.fontName = {
         family: "Graphik",
-        style: "Medium",
+        style: "Regular",
       }
       
       text.x = 0
@@ -93,7 +94,7 @@ main().then(() => {
 
       if (bgColor === "0" || bgColor === "1") {
         page.backgrounds = [{type: 'SOLID', color: {r: 86 / 255, g: 194 / 255, b: 136 / 255}}]
-        frame.backgrounds = [{type: 'SOLID', color: {r: 86 / 255, g: 194 / 255, b: 136 / 255}}]
+        frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: 86 / 255, g: 194 / 255, b: 136 / 255}}]
 
         if (pageTitle.length === 0) {
 
@@ -110,7 +111,7 @@ main().then(() => {
   
       if (bgColor === "2") {
         page.backgrounds = [{type: 'SOLID', color: {r: 82 / 255, g: 124 / 255, b: 235 / 255}}]
-        frame.backgrounds = [{type: 'SOLID', color: {r: 82 / 255, g: 124 / 255, b: 235 / 255}}]
+        frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: 82 / 255, g: 124 / 255, b: 235 / 255}}]
 
        if (pageTitle.length === 0) {
 
@@ -128,7 +129,7 @@ main().then(() => {
   
       if (bgColor === "3") {
         page.backgrounds = [{type: 'SOLID', color: {r: 85 / 255, g: 101 / 255, b: 117 / 255}}]
-        frame.backgrounds = [{type: 'SOLID', color: {r: 85 / 255, g: 101 / 255, b: 117 / 255}}]
+        frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: 85 / 255, g: 101 / 255, b: 117 / 255}}]
 
        if (pageTitle.length === 0) {
 
@@ -141,12 +142,12 @@ main().then(() => {
           text.characters = pageTitle
         }
 
-        label.characters = "Experimental"
+        label.characters = "Wireframe"
       }
   
       if (bgColor === "4") {
         page.backgrounds = [{type: 'SOLID', color: {r: 18 / 255, g: 146 / 255, b: 238 / 255}}]
-        frame.backgrounds = [{type: 'SOLID', color: {r: 18 / 255, g: 146 / 255, b: 238 / 255}}]
+        frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: 18 / 255, g: 146 / 255, b: 238 / 255}}]
 
         if (pageTitle.length === 0) {
 
@@ -159,12 +160,12 @@ main().then(() => {
           text.characters = pageTitle
         }
 
-        label.characters = "Hand-Off"
+        label.characters = "Usage"
       }
   
       if (bgColor === "5") {
         page.backgrounds = [{type: 'SOLID', color: {r: 250 / 255, g: 179 / 255, b: 71 / 255}}]
-        frame.backgrounds = [{type: 'SOLID', color: {r: 250 / 255, g: 179 / 255, b: 71 / 255}}]
+        frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: 250 / 255, g: 179 / 255, b: 71 / 255}}]
 
         if (pageTitle.length === 0) {
 
@@ -182,7 +183,7 @@ main().then(() => {
   
       if (bgColor === "6") {
         page.backgrounds = [{type: 'SOLID', color: {r: 242 / 255, g: 52 / 255, b: 89 / 255}}]
-        frame.backgrounds = [{type: 'SOLID', color: {r: 242 / 255, g: 52 / 255, b: 89 / 255}}]
+        frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: 242 / 255, g: 52 / 255, b: 89 / 255}}]
 
         if (pageTitle.length === 0) {
 
@@ -200,7 +201,7 @@ main().then(() => {
 
       if (bgColor === "7") {
         page.backgrounds = [{type: 'SOLID', color: {r: 197 / 255, g: 147 / 255, b: 219 / 255}}]
-        frame.backgrounds = [{type: 'SOLID', color: {r: 197 / 255, g: 147 / 255, b: 219 / 255}}]
+        frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: 197 / 255, g: 147 / 255, b: 219 / 255}}]
 
         if (pageTitle.length === 0) {
 
