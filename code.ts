@@ -1,9 +1,8 @@
-figma.showUI(__html__,{width: 300, height: 340});
+figma.showUI(__html__,{width: 300, height: 290});
 
 async function main() {
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" });
-  await figma.loadFontAsync({ family: "Graphik", style: "Medium" });
-  await figma.loadFontAsync({ family: "Graphik", style: "Regular" });
+  await figma.loadFontAsync({ family: "Roboto", style: "Bold" });
 }
 
 main().then(() => {
@@ -45,42 +44,37 @@ main().then(() => {
 
     if (msg.type === 'create-page') {
   
-      const pageTitle = msg.titletext
-      const bgColor = msg.colorValue
-      const frame = figma.createFrame()
-      const page = figma.createPage()
-      const text = figma.createText()
-      const label = figma.createText()
-      const pageBreak = figma.createPage()
+      let pageTitle = msg.titletext
+      let bgColor = msg.colorValue
+      let frame = figma.createFrame()
+      let page = figma.createPage()
+      let text = figma.createText()
+      let label = figma.createText()
+      let pageBreak = figma.createPage()
       
+   
+      page.appendChild(frame)
+      frame.appendChild(text)
+      frame.appendChild(label)
       frame.resize(620,320)
-  
+
+
       page.name = "Cover"
       label.name = "Label"
       frame.name = "Thumb"
       text.name = "Title"
       pageBreak.name = "---"
         
-      page.appendChild(frame)
-      frame.appendChild(text)
-      frame.appendChild(label)
-  
-      text.fontName = {
-        family: "Graphik",
-        style: "Medium",
-      }
 
-      label.fontName = {
-        family: "Graphik",
-        style: "Regular",
-      }
-      
       text.x = 0
       text.y = 20
       text.fontSize = 46
       text.textAlignVertical = "CENTER"
       text.textAutoResize = "NONE"
       text.resize(620,320)
+      text.fontName = { family: "Roboto", style: "Bold" }
+      text.fills = [{type: 'SOLID', color: {r: 255 / 255, g: 255 / 255, b: 255 / 255}}]
+
 
       label.y = 0
       label.x = 0
@@ -88,11 +82,11 @@ main().then(() => {
       label.textAlignHorizontal ="LEFT"
       label.textAutoResize = "WIDTH_AND_HEIGHT"
       label.textAlignVertical = "TOP"
-  
-      text.fills = [{type: 'SOLID', color: {r: 255 / 255, g: 255 / 255, b: 255 / 255}}]
+      label.fontName = { family: "Roboto", style: "Regular" }
       label.fills = [{type: 'SOLID', color: {r: 255 / 255, g: 255 / 255, b: 255 / 255}}]
 
-      function picker(hex1,hex2,hex3,newLabel) {
+
+      async function picker(hex1,hex2,hex3,newLabel) {
         page.backgrounds = [{type: 'SOLID', color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
         frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
 
@@ -109,7 +103,7 @@ main().then(() => {
         label.characters = newLabel
       }
 
-      if (bgColor === "0" || bgColor === "1") {
+      if (bgColor === "1") {
         picker(86,194,136,"Brainstorm")
       }
   
@@ -130,11 +124,11 @@ main().then(() => {
       }
   
       if (bgColor === "6") {
-        picker(242,52,89,"Review")
+        picker(242,52,89,"Ready for review")
       }
 
       if (bgColor === "7") {
-        picker(197,147,219,"Work In Progress")
+        picker(197,147,219,"Work in progress")
       }
 
       figma.currentPage = page
@@ -146,7 +140,7 @@ main().then(() => {
 
     figma.root.children.forEach(page => {
 
-      if(page.name === "sdc9s098c0s98") {
+      if (page.name === "sdc9s098c0s98") {
         page.remove()
       }
     })
