@@ -131,6 +131,10 @@ main().then(() => {
         picker(197,147,219,"Work in progress")
       }
 
+      if (bgColor === "8") {
+        picker(0,38,81,"Archived")
+      }
+
       figma.currentPage = page
       figma.viewport.zoom = 1
       figma.root.insertChild(0, page);
