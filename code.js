@@ -121,6 +121,7 @@ main().then(() => {
             figma.viewport.zoom = 1;
             figma.root.insertChild(0, page);
             figma.root.insertChild(1, pageBreak);
+            frame.setRelaunchData({ edit: "This page was created with Cover Status" });
         }
         figma.root.children.forEach(page => {
             if (page.name === "sdc9s098c0s98") {

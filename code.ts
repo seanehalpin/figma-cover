@@ -52,7 +52,6 @@ main().then(() => {
       let label = figma.createText()
       let pageBreak = figma.createPage()
       
-   
       page.appendChild(frame)
       frame.appendChild(text)
       frame.appendChild(label)
@@ -139,6 +138,8 @@ main().then(() => {
       figma.viewport.zoom = 1
       figma.root.insertChild(0, page);
       figma.root.insertChild(1, pageBreak);
+
+      frame.setRelaunchData({edit: "This page was created with Cover Status"})
   
     }
 
@@ -153,7 +154,3 @@ main().then(() => {
   
   }
 })
-
-
-
-
