@@ -1,12 +1,49 @@
+# Figsvelte
+A boilerplate for creating Figma plugins using Svelte.
 
-![Wire Box](https://p-zkF42X.t2.n0.cdn.getcloudapp.com/items/E0uPDEJd/Cover.png?v=d880921d136b62719a7abf656f893489 "Wire Box")
+This starter project has everything you need to start developing a Figma plugin usign Svelte. Your JS, CSS, SVG and image assets can be bundled on build. The package will take care of compiling your typescript + app on save during development, and also minify on build. 
 
-### Cover Status
+Additionally, this package comes preconfigured with [Figma Plugin DS Svelte](https://github.com/thomas-lowry/figma-plugin-ds-svelte) where you have access to a large range of components and icons that match the Figma UI, to get you up and running quickly. Note: installing this boilerplate will install the component library as a dependency.
 
-- Quickly create cover pages for projects. You can adjust projects based on their current status
+Only what you import/use will be included in the final build for small bundle size.
 
-- When observing Figma files through the file browser you'll now get every projects status at a glance
 
-- Each category has a unique color scheme, letting you know a projects status at a glance
+## To get started
+```bash
+npx degit thomas-lowry/figsvelte figma-plugin
+cd figma-plugin
+npm install
+```
+_Note that you will need to have [Node.js](https://nodejs.org/) installed._
 
-- Easily update a projects status to let your team know its current progression
+
+## Development
+During development, watch your project for changes with the following command.
+
+```bash
+npm run dev
+```
+Start building your plugin UI in `'src/Plugin.svelte'`.
+
+
+## Build
+When ready to package up your final Figma Plugin:
+```bash
+npm run build
+```
+
+
+## Useful info
+To include an external CSS file:
+```javascript
+import styles from './styles.css';
+```
+
+To include an SVG:
+```javascript
+import SvgName from './image.svg';
+
+//use in your markup
+{@html SvgName}
+```
+_For more info on using the Icon component system with SVGs from [Figma Plugin DS Svelte](https://github.com/thomas-lowry/figma-plugin-ds-svelte), refer to the repo._
