@@ -10,18 +10,13 @@ main().then(() => {
   let nodes = figma.currentPage.selection
   let selectedLayers = nodes
 
-
   let oldTitleArray = []
     
-
   function errorMsg() {
     figma.closePlugin('⚠️ Please select a frame to comment on ⚠️')
   }
 
-
   figma.showUI(__html__, {width: 400, height: 485 })
-
-  console.log(figma.root.name)
 
   let name = figma.root.name
 
@@ -81,7 +76,6 @@ main().then(() => {
       frame.appendChild(label)
       frame.resize(620,320)
 
-
       page.name = "Cover"
       label.name = "Label"
       frame.name = "Thumb"
@@ -107,7 +101,6 @@ main().then(() => {
       label.textAlignVertical = "TOP"
       label.fontName = { family: "Roboto", style: "Regular" }
       label.fills = [{type: 'SOLID', color: {r: 255 / 255, g: 255 / 255, b: 255 / 255}}]
-
 
       async function picker(hex1,hex2,hex3,newLabel) {
         page.backgrounds = [{type: 'SOLID', color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
