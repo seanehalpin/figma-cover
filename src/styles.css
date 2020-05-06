@@ -185,7 +185,7 @@ h5 {
   background-color: #fff;
   border-radius: 5px 0 0 5px;
   margin-left: auto;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
@@ -207,6 +207,7 @@ h5 {
 
 .mini .title {
   font-size: 15px;
+  line-height: 20px;
 }
 
 .small .right {
@@ -215,7 +216,7 @@ h5 {
   width: 22px;
   background-color: #F1F3F5;
   border-radius: 4px 0px 0px 4px;
-  right: 0;
+  right: 1px;
   top: 17px;
 }
 
