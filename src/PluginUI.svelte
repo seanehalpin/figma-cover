@@ -10,7 +10,7 @@
   { 'value': 'discovery', 'label': 'Discovery', 'group': null, 'selected': false },
   { 'value': 'wip', 'label': 'Work In Progress', 'group': null, 'selected': false },
   { 'value': 'usage', 'label': 'Usage', 'group': null, 'selected': false },
-  { 'value': 'review', 'label': 'Review', 'group': null, 'selected': false },
+  { 'value': 'review', 'label': 'Ready for review', 'group': null, 'selected': false },
   { 'value': 'research', 'label': 'Research', 'group': null, 'selected': false },
   { 'value': 'archived', 'label': 'Archived', 'group': null, 'selected': false }
 
@@ -44,7 +44,7 @@
   function addCover() {
     parent.postMessage({ pluginMessage: { 
       'type': 'add-cover', 
-      'status': selected ? selected.value : 'default',
+      'status': selected ? selected.value : 'discovery',
       'title': inputValue ? inputValue : pageName
     } }, '*');
   }

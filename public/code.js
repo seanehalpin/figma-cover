@@ -1,5 +1,4 @@
-'use strict';
-
+"use strict";
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -13,40 +12,4 @@ MERCHANTABLITY OR NON-INFRINGEMENT.
 
 See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
-***************************************************************************** */
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        yield figma.loadFontAsync({ family: "Roboto", style: "Regular" });
-    });
-}
-main().then(() => {
-    let entirePage = figma.currentPage;
-    let pageFrames = figma.currentPage.children;
-    let nodes = figma.currentPage.selection;
-    figma.showUI(__html__, { width: 400, height: 485 });
-    console.log(figma.root.name);
-    let name = figma.root.name;
-    figma.ui.postMessage({
-        'name': name
-    });
-    figma.ui.onmessage = msg => {
-        if (msg.type === 'close') {
-            figma.closePlugin();
-        }
-        if (msg.type === 'add-cover') {
-            console.log(msg.status);
-            console.log(msg.title);
-        }
-    };
-});
+***************************************************************************** */function e(e,t,a,i){return new(a||(a=Promise))((function(r,o){function n(e){try{l(i.next(e))}catch(e){o(e)}}function c(e){try{l(i.throw(e))}catch(e){o(e)}}function l(e){var t;e.done?r(e.value):(t=e.value,t instanceof a?t:new a((function(e){e(t)}))).then(n,c)}l((i=i.apply(e,t||[])).next())}))}(function(){return e(this,void 0,void 0,(function*(){yield figma.loadFontAsync({family:"Roboto",style:"Regular"}),yield figma.loadFontAsync({family:"Roboto",style:"Bold"})}))})().then(()=>{figma.currentPage,figma.currentPage.children,figma.currentPage.selection;let t=[];figma.showUI(__html__,{width:400,height:485}),console.log(figma.root.name);let a=figma.root.name;figma.ui.postMessage({name:a}),figma.ui.onmessage=a=>{if(figma.root.children.forEach(e=>{"Cover"===e.name&&e.children.forEach(e=>{"FRAME"===e.type&&e.children.forEach(e=>{if("TEXT"===e.type&&"Title"===e.name){let a=e.characters;t.push(a)}})})}),figma.root.children.forEach(e=>{"Cover"===e.name&&(e.children.forEach(e=>{e.remove()}),e.name="sdc9s098c0s98"),"---"===e.name&&e.remove()}),"close"===a.type&&figma.closePlugin(),"add-cover"===a.type){let r=a.title,o=a.status,n=figma.createFrame(),c=figma.createPage(),l=figma.createText(),s=figma.createText(),m=figma.createPage();function i(a,i,o,m){return e(this,void 0,void 0,(function*(){c.backgrounds=[{type:"SOLID",color:{r:a/255,g:i/255,b:o/255}}],n.backgrounds=[{type:"SOLID",visible:!1,color:{r:a/255,g:i/255,b:o/255}}],0===r.length?t.length>=1?l.characters=t.toString():l.characters="Title":l.characters=r,s.characters=m}))}c.appendChild(n),n.appendChild(l),n.appendChild(s),n.resize(620,320),c.name="Cover",s.name="Label",n.name="Thumb",l.name="Title",m.name="---",l.x=0,l.y=20,l.fontSize=46,l.textAlignVertical="CENTER",l.textAutoResize="NONE",l.resize(620,320),l.fontName={family:"Roboto",style:"Bold"},l.fills=[{type:"SOLID",color:{r:1,g:1,b:1}}],s.y=0,s.x=0,s.fontSize=32,s.textAlignHorizontal="LEFT",s.textAutoResize="WIDTH_AND_HEIGHT",s.textAlignVertical="TOP",s.fontName={family:"Roboto",style:"Regular"},s.fills=[{type:"SOLID",color:{r:1,g:1,b:1}}],"brainstorming"===o&&i(86,194,136,"Brainstorm"),"discovery"===o&&i(82,124,235,"Discovery"),"wireframes"===o&&i(85,101,117,"Wireframes"),"usage"===o&&i(18,146,238,"Usage"),"research"===o&&i(250,179,71,"Research"),"review"===o&&i(242,52,89,"Ready for review"),"wip"===o&&i(197,147,219,"Work in progress"),"archived"===o&&i(0,38,81,"Archived"),figma.currentPage=c,figma.viewport.zoom=1,figma.root.insertChild(0,c),figma.root.insertChild(1,m),n.setRelaunchData({edit:"This page was created with Cover Status"})}figma.root.children.forEach(e=>{"sdc9s098c0s98"===e.name&&e.remove()}),figma.closePlugin()}});

@@ -37,7 +37,7 @@
   bottom: 16px;
   width: 24px;
   height: 24px;
-  background-color: #0EA958;
+  background-color: #F1F3F5;
   border-radius: 50%;
 }
 
@@ -182,7 +182,7 @@ h5 {
 .small {
   width: 353px;
   height: 178px;
-  background-color: fff;
+  background-color: #fff;
   border-radius: 5px 0 0 5px;
   margin-left: auto;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
