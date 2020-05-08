@@ -26,42 +26,43 @@ main().then(() => {
 
   figma.ui.onmessage = msg => {
 
-    figma.root.children.forEach(page => {
-
-      if(page.name === "Cover") {
-        
-        page.children.forEach(child => {
-
-          if (child.type === "FRAME") {
-            child.children.forEach(newChild => {
-              if (newChild.type === "TEXT" && newChild.name === "Title") {
-                let oldTitle = newChild.characters
-                oldTitleArray.push(oldTitle)
-              }
-            })
-          }
-        })
-      }
-    })
-
-    figma.root.children.forEach(page => {
-      if(page.name === "Cover") {
-        
-        page.children.forEach(child => {
-          child.remove()
-        })
-        page.name = "sdc9s098c0s98"
-      }
-      if(page.name === "---") {
-        page.remove()
-      }
-    })
 
     if (msg.type === 'close') {
       figma.closePlugin()
     }
 
     if (msg.type === 'add-cover') {
+
+      figma.root.children.forEach(page => {
+
+        if(page.name === "Cover") {
+          
+          page.children.forEach(child => {
+  
+            if (child.type === "FRAME") {
+              child.children.forEach(newChild => {
+                if (newChild.type === "TEXT" && newChild.name === "Title") {
+                  let oldTitle = newChild.characters
+                  oldTitleArray.push(oldTitle)
+                }
+              })
+            }
+          })
+        }
+      })
+  
+      figma.root.children.forEach(page => {
+        if(page.name === "Cover") {
+          
+          page.children.forEach(child => {
+            child.remove()
+          })
+          page.name = "sdc9s098c0s98"
+        }
+        if(page.name === "---") {
+          page.remove()
+        }
+      })
       
       let pageTitle = msg.title
       let bgColor = msg.status
