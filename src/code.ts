@@ -71,8 +71,12 @@ main().then(() => {
       let text = figma.createText()
       let label = figma.createText()
       let pageBreak = figma.createPage()
+      let bgRect = figma.createRectangle()
+
+
       
       page.appendChild(frame)
+      frame.appendChild(bgRect)
       frame.appendChild(text)
       frame.appendChild(label)
       frame.resize(620,320)
@@ -81,6 +85,7 @@ main().then(() => {
       label.name = "Label"
       frame.name = "Thumb"
       text.name = "Title"
+      bgRect.name = "Background"
       pageBreak.name = "---"
         
 
@@ -93,6 +98,9 @@ main().then(() => {
       text.fontName = { family: "Roboto", style: "Bold" }
       text.fills = [{type: 'SOLID', color: {r: 255 / 255, g: 255 / 255, b: 255 / 255}}]
 
+      bgRect.y = 0
+      bgRect.x = 0
+      bgRect.resize(620,320)
 
       label.y = 0
       label.x = 0
@@ -106,6 +114,7 @@ main().then(() => {
       async function picker(hex1,hex2,hex3,newLabel) {
         page.backgrounds = [{type: 'SOLID', color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
         frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
+        bgRect.fills = [{type: 'SOLID', color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
 
         if (pageTitle.length === 0) {
 
