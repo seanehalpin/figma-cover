@@ -2,7 +2,8 @@
 
   import { GlobalCSS } from 'figma-plugin-ds-svelte';
   import styles from './styles.css';
-  import { Button, Input, Label, SelectMenu, Icon, IconButton, IconListTile, IconLayoutGridUniform } from 'figma-plugin-ds-svelte';
+  import { fade, fly } from 'svelte/transition';
+  import { Button, Input, Label, SelectMenu, Icon, IconButton, Radio, IconSmiley, IconSettings } from 'figma-plugin-ds-svelte';
 
   let menuItemArray = [
   { 'value': 'brainstorming', 'label': 'Brainstorming', 'group': null, 'selected': false },
@@ -17,21 +18,33 @@
   ];
 
   let selected;
+  let selectedColor;
   let inputValue;
   let categoryPlaceholder = 'Category...';
   let primary = 'primary';
-  let large = true;
-  let small = false;
   let pageName = 'Title...'
+  let inputName = null;
+  let emojiValue;
+  
+  let emojis = { emojisOn: false };
 
-  function showLarge() {
-    large = true;
-    small = false;
+  function emojiToggle() {
+    emojis.emojisOn = !emojis.emojisOn;
   }
 
-  function showSmall() {
-    large = false;
-    small = true;
+  function emojiChange() {
+    emojis = { emojisOn: false};
+
+    if (message === null) {
+      message = emojiValue;
+    } else {
+      message = message + emojiValue;
+    }
+    emojiValue = ""; 
+  }
+
+  function colorToggle() {
+    colors.colorsOn = !colors.colorsOn;
   }
 
   window.onmessage = async (event) => {
@@ -60,23 +73,7 @@
 
 <div class="wrapper p-xsmall">
 
-  <div class="controls">
-    <div class="heading">
-      <h5>Preview</h5>
-    </div>
-    <div class="toggles">
-      {#if large}
-      <IconButton iconName={IconListTile} on:click={showLarge} selected />
-      <IconButton iconName={IconLayoutGridUniform} on:click={showSmall} />
-      {:else}
-      <IconButton iconName={IconListTile} on:click={showLarge} />
-      <IconButton iconName={IconLayoutGridUniform} on:click={showSmall} selected />
-      {/if}
-    </div>
-  </div>
-
   <div class="preview">
-    {#if large}
     <div class="large {selected ? selected.value : 'default'}">
 
       <span class="category">
@@ -87,6 +84,13 @@
         {inputValue ? inputValue : pageName}
       </span>
 
+      {#if inputName <=1 }
+      <span></span>
+      {:else}
+      <span class="name {selectedColor ? selectedColor.value : 'pink'}">{inputName}</span>
+      {/if}
+      
+
       <div class="footer">
         <div class="skeleton">
           <div class="line"></div>
@@ -96,30 +100,37 @@
       </div>
       
     </div>
-    {:else}
-    <div class="small">
-      <div class="mini {selected ? selected.value : 'default'}">
-        <span class="category">
-        {selected ? selected.label : 'Discovery'}
-        </span>
-        <span class="title">
-          {inputValue ? inputValue : pageName}
-        </span>
-      </div>
-      <div class="right"></div>
-      <div class="skeleton">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        </div>
-    </div>
-    {/if}
   </div>
 
   <div class="options">
     <SelectMenu bind:placeholder={categoryPlaceholder} bind:menuItems={menuItemArray} bind:value={selected} />
     <Input bind:value={inputValue} placeholder="Title..." />
+    <Input bind:value={inputName} placeholder="Name..."  />
+    {#if inputName <=1 }
+    <div class="avatar-buttons"></div>
+    {:else}
+    {#if emojis.emojisOn}
+    <div class="emoji" transition:fly="{{ y: 10, duration: 200 }}">
+      <Radio bind:group={emojiValue} on:change={emojiChange} value="🦄"></Radio>
+      <Radio bind:group={emojiValue} on:change={emojiChange} value="🦊"></Radio>
+      <Radio bind:group={emojiValue} on:change={emojiChange} value="🐯"></Radio>
+      <Radio bind:group={emojiValue} on:change={emojiChange} value="🐶"></Radio>
+      <Radio bind:group={emojiValue} on:change={emojiChange} value="🐷"></Radio>
+      <Radio bind:group={emojiValue} on:change={emojiChange} value="🐨"></Radio>
+      <Radio bind:group={emojiValue} on:change={emojiChange} value="🐰"></Radio>
+      <Radio bind:group={emojiValue} on:change={emojiChange} value="🐸"></Radio>
+    </div>
+     {/if}
+    <div class="avatar-buttons">
+    <div transition:fly="{{ y: 5, duration: 200 }}">
+      <IconButton on:click={emojiToggle} iconName={IconSmiley}/>
+    </div>
+    <div transition:fly="{{ y: 5, duration: 200, delay: 100 }}">
+      <IconButton on:click={emojiToggle} iconName={IconSettings}/>
+    </div>
+
+    </div>
+    {/if}
   </div>
   
   <div class="button-holder">

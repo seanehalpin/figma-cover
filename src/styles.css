@@ -129,12 +129,25 @@ h5 {
 
 .options {
   margin: 20px 0 0;
+  position: relative;
 }
 
 .options .input {
   margin-top: 10px;
 }
 
+.avatar-buttons {
+  position: absolute;
+  display: flex;
+  right: 0;
+  bottom: 3px;
+  z-index: 10;
+}
+
+.avatar-buttons div:hover {
+  background: none !important;
+  cursor: pointer !important;
+}
 
 .controls {
   display: flex;
@@ -255,4 +268,107 @@ h5 {
 .small .skeleton .line:nth-child(4) {
   width: 60px;
   bottom: 17px;
+}
+
+.options .input input {
+  border: 0 !important;
+  border-bottom: 1px solid var(--black1) !important;
+  height: 36px !important;
+}
+
+
+.emoji {
+  display: flex;
+  position: absolute;
+  right: -4px;
+  bottom: 45px;
+  background: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.24);
+  border-radius: 12px;
+  padding: 6px;
+  z-index: 100;
+}
+
+.emoji .icon-component {
+  font-size: 16px !important;
+}
+
+.emoji > div {
+  border-radius: 6px !important;
+}
+
+.emoji label {
+  padding: 0 !important;
+  margin:  0 !important;
+}
+
+.emoji label:hover {
+  cursor: pointer;
+}
+
+.emoji label:before {
+  border: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 6px !important;
+  font-size: 16px !important;
+}
+
+
+.emoji > div:first-child label:before {
+  content: "🦄";
+}
+
+.emoji > div:nth-child(2) label:before {
+  content: "🦊";
+}
+
+.emoji > div:nth-child(3) label:before {
+  content: "🐯";
+}
+
+.emoji > div:nth-child(4) label:before {
+  content: "🐶";
+}
+
+.emoji > div:nth-child(5) label:before {
+  content: "🐷";
+}
+
+.emoji > div:nth-child(6) label:before {
+  content: "🐨";
+}
+
+.emoji > div:nth-child(7) label:before {
+  content: "🐰";
+}
+
+.emoji > div:nth-child(8) label:before {
+  content: "🐸";
+}
+
+.emoji input:checked+label:before {
+  background: none !important;
+}
+
+.emoji input {
+  display: none !important;
+}
+
+.name {
+  position: absolute;
+  right: 16px;
+  bottom: 65px;
+  text-align: right;
+  color: #000;
+  border-radius: 5px;
+  padding: 0 6px;
+  line-height: 26px;
+  font-size: 12px;
+  background: #fff;
+}
+
+.name.pink {
+  color: #731814;
+  background: #FED1C4;
 }
