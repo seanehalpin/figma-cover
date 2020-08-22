@@ -108,16 +108,16 @@ h5 {
 
 .title {
   color: #fff;
-  font-family: Roboto;
+  font-family: Inter,Roboto;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 21px;
   line-height: 26px;
   display: block;
 }
 
 .category {
-  font-family: Roboto;
+  font-family: Inter,Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 15px;

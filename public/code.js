@@ -27,8 +27,9 @@ function __awaiter(thisArg, _arguments, P, generator) {
 
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield figma.loadFontAsync({ family: "Roboto", style: "Regular" });
-        yield figma.loadFontAsync({ family: "Roboto", style: "Bold" });
+        yield figma.loadFontAsync({ family: 'Roboto', style: 'Regular' });
+        yield figma.loadFontAsync({ family: "Inter", style: "Regular" });
+        yield figma.loadFontAsync({ family: "Inter", style: "Bold" });
     });
 }
 main().then(() => {
@@ -92,22 +93,22 @@ main().then(() => {
             pageBreak.name = "---";
             text.x = 0;
             text.y = 20;
+            text.fontName = { family: "Inter", style: "Bold" };
             text.fontSize = 46;
             text.textAlignVertical = "CENTER";
             text.textAutoResize = "NONE";
             text.resize(620, 320);
-            text.fontName = { family: "Roboto", style: "Bold" };
             text.fills = [{ type: 'SOLID', color: { r: 255 / 255, g: 255 / 255, b: 255 / 255 } }];
             bgRect.y = 0;
             bgRect.x = 0;
             bgRect.resize(620, 320);
             label.y = 0;
             label.x = 0;
+            label.fontName = { family: "Inter", style: "Regular" };
             label.fontSize = 32;
             label.textAlignHorizontal = "LEFT";
             label.textAutoResize = "WIDTH_AND_HEIGHT";
             label.textAlignVertical = "TOP";
-            label.fontName = { family: "Roboto", style: "Regular" };
             label.fills = [{ type: 'SOLID', color: { r: 255 / 255, g: 255 / 255, b: 255 / 255 } }];
             function picker(hex1, hex2, hex3, newLabel) {
                 return __awaiter(this, void 0, void 0, function* () {
