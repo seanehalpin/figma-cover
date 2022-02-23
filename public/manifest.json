@@ -3,6 +3,7 @@
   "id": "777546247691358380",
   "api": "1.0.0",
   "main": "code.js",
+  "editorType": ["figma"],
   "ui": "index.html",
   "relaunchButtons": [
     {"command": "edit", "name": "Cover Status"}

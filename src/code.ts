@@ -10,6 +10,9 @@ main().then(() => {
   let nodes = figma.currentPage.selection
   let selectedLayers = nodes
 
+  let resizeWidth = 1600
+  let resizeHeight = 960
+
   let oldTitleArray = []
     
   function errorMsg() {
@@ -73,13 +76,11 @@ main().then(() => {
       let pageBreak = figma.createPage()
       let bgRect = figma.createRectangle()
 
-
-      
       page.appendChild(frame)
       frame.appendChild(bgRect)
       frame.appendChild(text)
       frame.appendChild(label)
-      frame.resize(620,320)
+      frame.resize(resizeWidth,resizeHeight)
 
       page.name = "Cover"
       label.name = "Label"
@@ -87,24 +88,25 @@ main().then(() => {
       text.name = "Title"
       bgRect.name = "Background"
       pageBreak.name = "---"
-        
 
-      text.x = 0
-      text.y = 20
-      text.fontSize = 46
+      figma.setFileThumbnailNodeAsync(frame) 
+
+      text.x = 180
+      text.y = 57
+      text.fontSize = 110
       text.textAlignVertical = "CENTER"
       text.textAutoResize = "NONE"
-      text.resize(620,320)
+      text.resize(1240,resizeHeight)
       text.fontName = { family: "Roboto", style: "Bold" }
       text.fills = [{type: 'SOLID', color: {r: 255 / 255, g: 255 / 255, b: 255 / 255}}]
 
       bgRect.y = 0
       bgRect.x = 0
-      bgRect.resize(620,320)
+      bgRect.resize(resizeWidth,resizeHeight)
 
-      label.y = 0
-      label.x = 0
-      label.fontSize = 32
+      label.y = 60
+      label.x = 180
+      label.fontSize = 75
       label.textAlignHorizontal ="LEFT"
       label.textAutoResize = "WIDTH_AND_HEIGHT"
       label.textAlignVertical = "TOP"
@@ -112,7 +114,7 @@ main().then(() => {
       label.fills = [{type: 'SOLID', color: {r: 255 / 255, g: 255 / 255, b: 255 / 255}}]
 
       async function picker(hex1,hex2,hex3,newLabel) {
-        page.backgrounds = [{type: 'SOLID', color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
+        page.backgrounds = [{type: 'SOLID', color: {r: 234 / 255, g: 234 / 255, b: 234 / 255}}]
         frame.backgrounds = [{type: 'SOLID', visible: false, color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
         bgRect.fills = [{type: 'SOLID', color: {r: hex1 / 255, g: hex2 / 255, b: hex3 / 255}}]
 
@@ -125,7 +127,7 @@ main().then(() => {
           }  
         } else {
           text.characters = pageTitle
-        }
+        } 
         label.characters = newLabel
       }
 
