@@ -29,6 +29,7 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         yield figma.loadFontAsync({ family: "Roboto", style: "Regular" });
         yield figma.loadFontAsync({ family: "Roboto", style: "Bold" });
+        yield figma.loadFontAsync({ family: "Inter", style: "Regular" });
     });
 }
 main().then(() => {
