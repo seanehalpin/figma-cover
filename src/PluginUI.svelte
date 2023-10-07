@@ -1,37 +1,60 @@
 <script>
+  
+  import styles from './styles.scss'
+  import { onMount } from 'svelte'
+  import Card from './components/Card.svelte'
+  import Colors from './components/Colors.svelte'
+  import Container from './components/Container.svelte'
+  import Controls from './components/Controls.svelte'
+    import Picker from './components/Picker.svelte';
+    import Button from './components/Button.svelte';
+  
+  let ready
+  let pageName
+  let showPicker = true
+  $: currentColor = 3
+  $: customColor = "#D423A0"
+  $: options = [
+    {option: 'Brainstorm', value: 1, active: false},
+    {option: 'Wireframes', value: 2, active: false},
+    {option: 'Discovery', value: 3, active: true},
+    {option: 'Review', value: 4, active: false},
+    {option: 'Spec', value: 5, active: false},
+    {option: 'Archived', value: 6, active: false},
+    {option: 'Custom', value: 7, active: false},
+  ]
 
-  import { GlobalCSS } from 'figma-plugin-ds-svelte';
-  import styles from './styles.css';
-  import { Button, Input, Label, SelectMenu, Icon, IconButton, IconListTile, IconLayoutGridUniform } from 'figma-plugin-ds-svelte';
-
-  let menuItemArray = [
-  { 'value': 'brainstorming', 'label': 'Brainstorming', 'group': null, 'selected': false },
-  { 'value': 'wireframes', 'label': 'Wireframes', 'group': null, 'selected': false },
-  { 'value': 'discovery', 'label': 'Discovery', 'group': null, 'selected': false },
-  { 'value': 'wip', 'label': 'Work In Progress', 'group': null, 'selected': false },
-  { 'value': 'usage', 'label': 'Usage', 'group': null, 'selected': false },
-  { 'value': 'review', 'label': 'Ready for review', 'group': null, 'selected': false },
-  { 'value': 'research', 'label': 'Research', 'group': null, 'selected': false },
-  { 'value': 'archived', 'label': 'Archived', 'group': null, 'selected': false }
-
-  ];
-
-  let selected;
-  let inputValue;
-  let categoryPlaceholder = 'Category...';
-  let primary = 'primary';
-  let large = true;
-  let small = false;
-  let pageName = 'Title...'
-
-  function showLarge() {
-    large = true;
-    small = false;
+  const addCover = () => {
+    parent.postMessage({ pluginMessage: { 
+      'type': 'add-cover', 
+      'status': selected ? selected.value : 'discovery',
+      'title': inputValue ? inputValue : pageName
+    } }, '*');
   }
 
-  function showSmall() {
-    large = false;
-    small = true;
+  const closePlugin = () => {
+    parent.postMessage({ pluginMessage: { 
+      'type': 'close'
+    } }, '*');
+  }
+
+  const handleColor = (event) => {
+    let color = event.detail.color
+    let preview = event.detail.preview
+    let previewExit = event.detail.previewExit
+    let picker = event.detail.showPicker
+    if (preview) {
+      currentColor = preview
+    }
+    if (previewExit) {
+      currentColor = previewExit
+    }
+    if (color){
+      currentColor = color
+    }
+    if(picker) {
+      showPicker = picker
+    }
   }
 
   window.onmessage = async (event) => {
@@ -40,92 +63,57 @@
     }
   }
 
+  onMount(() => {
+    ready = true
+  })
 
-  function addCover() {
-    parent.postMessage({ pluginMessage: { 
-      'type': 'add-cover', 
-      'status': selected ? selected.value : 'discovery',
-      'title': inputValue ? inputValue : pageName
-    } }, '*');
+  const handlePicker = (event) => {
+    let picked = event.detail.showPicker
+    let left = event.detail.left
+    let top = event.detail.top
+
+    showPicker = picked
+    colorSquarePickerLeft = left
+    colorSquarePickerTop = top
+    
   }
 
-  function closePlugin() {
-    parent.postMessage({ pluginMessage: { 
-      'type': 'close'
-    } }, '*');
-  }
+  let h = 1, s = 1, v = 1
+  let colorSquarePickerLeft = "82%", colorSquarePickerTop = "15%"
+  let huePosition = "80%"
+
+  $: console.log("checking color: ", colorSquarePickerLeft, colorSquarePickerTop)
 
 </script>
 
-
-<div class="wrapper p-xsmall">
-
-  <div class="controls">
-    <div class="heading">
-      <h5>Preview</h5>
-    </div>
-    <div class="toggles">
-      {#if large}
-      <IconButton iconName={IconListTile} on:click={showLarge} selected />
-      <IconButton iconName={IconLayoutGridUniform} on:click={showSmall} />
-      {:else}
-      <IconButton iconName={IconListTile} on:click={showLarge} />
-      <IconButton iconName={IconLayoutGridUniform} on:click={showSmall} selected />
-      {/if}
-    </div>
-  </div>
-
-  <div class="preview">
-    {#if large}
-    <div class="large {selected ? selected.value : 'default'}">
-
-      <span class="category">
-        {selected ? selected.label : 'Discovery'}
-      </span>
-
-      <span class="title">
-        {inputValue ? inputValue : pageName}
-      </span>
-
-      <div class="footer">
-        <div class="skeleton">
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="avatar"></div>
-      </div>
-      
-    </div>
-    {:else}
-    <div class="small">
-      <div class="mini {selected ? selected.value : 'default'}">
-        <span class="category">
-        {selected ? selected.label : 'Discovery'}
-        </span>
-        <span class="title">
-          {inputValue ? inputValue : pageName}
-        </span>
-      </div>
-      <div class="right"></div>
-      <div class="skeleton">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        </div>
-    </div>
-    {/if}
-  </div>
-
-  <div class="options">
-    <SelectMenu bind:placeholder={categoryPlaceholder} bind:menuItems={menuItemArray} bind:value={selected} />
-    <Input bind:value={inputValue} placeholder="Title..." />
-  </div>
-  
-  <div class="button-holder">
-    <Button on:click={closePlugin} variant="secondary">Cancel</Button>
-    <Button on:click={addCover}>Create</Button>
-  </div>
-  
-
-</div>
+{#if ready}
+<Container>
+  {#if showPicker}
+  <Picker 
+  on:message={handlePicker} 
+  bind:h
+  bind:s
+  bind:v
+  bind:colorSquarePickerLeft
+  bind:colorSquarePickerTop
+  bind:currentColor 
+  bind:pageName
+  />
+  {:else}
+  <Card 
+    bind:currentColor 
+    bind:pageName
+    --colorCustom={customColor} 
+  />
+  <Colors 
+    on:message={handleColor} 
+    bind:currentColor 
+    bind:options 
+    --colorCustom={customColor}
+  />
+  <Controls>
+  <Button on:click={() => showPicker = true}>Create</Button>
+  </Controls>
+  {/if}
+</Container>
+{/if}

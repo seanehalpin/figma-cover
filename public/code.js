@@ -38,8 +38,10 @@ main().then(() => {
     let nodes = figma.currentPage.selection;
     let resizeWidth = 1600;
     let resizeHeight = 960;
+    const UI_WIDTH = 323;
+    const UI_MIN_HEIGHT = 367;
     let oldTitleArray = [];
-    figma.showUI(__html__, { width: 400, height: 485 });
+    figma.showUI(__html__, { themeColors: true, width: UI_WIDTH, height: UI_MIN_HEIGHT });
     let name = figma.root.name;
     figma.ui.postMessage({
         'name': name

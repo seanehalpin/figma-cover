@@ -1,0 +1,103 @@
+@import "mixins";
+
+:root {
+  --font-inter: "Inter", sans-serif;
+
+  --zindex-base: -1;
+  --zindex-modal: 1000;
+  --zindex-modal-base: 900;
+  --zindex-1: 1;
+  --zindex-2: 2;
+  --zindex-3: 3;
+  --zindex-top: 100;
+
+  --color-primary: #191918;
+  --color-white: #fff;
+  --color-primary-inverse: var(--color-white);
+  
+  --color-placeholder: rgba(240, 240, 240, 1);
+  --color-placeholder-inverse: rgba(255,255,255,0.1);
+
+  --color-bg: #F5F5F5;
+  --color-border: rgba(0,0,0,0.1);
+  --color-border-inverse: rgba(255,255,255,0.2);
+  --color-border-2: rgba(0,0,0,0.2);
+  --color-border-inverse-2: rgba(255,255,255,0.3);
+  --color-border-button: rgba(25, 25, 24, 0.2);
+  --color-border-button-inverse: rgba(255,255,255,0.3);
+  
+  --color-orange: #B55100;
+  --color-orange-light: #F5964E;
+  --color-purple: #831CE9;
+  --color-purple-light: #D7BAF5;
+  --color-green: #018125;
+  --color-green-light: #47C47D;
+  --color-pink: #C4194F;
+  --color-pink-light: #E5859F;
+  --color-blue: #1958F2;
+  --color-blue-light: #478DED;
+  --color-black: #191918;
+  --color-black-light: #414141;
+  --color-custom: #C3379C;
+  --color-rainbow: conic-gradient(from 129.15deg at 49.47% 51.06%, #FFC062 -79.73deg, #1ABCFE 1.15deg, #0ACF83 78.48deg, #A259FF 144.34deg, #F21E6A 208.99deg, #FFC062 280.27deg, #1ABCFE 361.15deg);
+
+  --radius-base: 5px;
+  --space-s: 16px;
+
+
+  --font-size-xsmall: 11px;
+  --font-size-small: 12px;
+  --font-size-large: 13px;
+  --font-size-xlarge: 14px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+  --font-line-height: 16px;
+  --font-line-height-large: 24px;
+  --font-letter-spacing-pos-xsmall: .005em;
+  --font-letter-spacing-neg-xsmall: .01em;
+  --font-letter-spacing-pos-small: 0;
+  --font-letter-spacing-neg-small: .005em;
+  --font-letter-spacing-pos-large: -.0025em;
+  --font-letter-spacing-neg-large: .0025em;
+  --font-letter-spacing-pos-xlarge: -.001em;
+  --font-letter-spacing-neg-xlarge: -.001em;
+  --border-radius-small: 2px;
+  --border-radius-med: 5px;
+  --border-radius-large: 6px;
+  --shadow-hud: 0 5px 17px rgba(0,0,0,.2),0 2px 7px rgba(0,0,0,.15);
+  --shadow-floating-window: 0 2px 14px rgba(0,0,0,.15);
+  --size-xxxsmall: 4px;
+  --size-xxsmall: 8px;
+  --size-xsmall: 16px;
+  --size-small: 24px;
+  --size-medium: 30px;
+  --size-large: 40px;
+  --size-xlarge: 48px;
+  --size-xxlarge: 64px;
+  --size-huge: 80px;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  color: var(--color-charcoal600);
+  font-family: var(--font-inter);
+  font-size: var(--font-size-small);
+}
+
+.bold + .normal {
+  margin-top: var(--size-xxsmall);
+}
+
+// figma dark mode
+
+.figma-dark {
+
+}

@@ -1,0 +1,12 @@
+// mixins
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin show-after {
+  opacity: 0.2;
+  transform: scale3d(1,1,1);
+}
